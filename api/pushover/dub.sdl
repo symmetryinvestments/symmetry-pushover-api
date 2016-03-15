@@ -1,0 +1,4 @@
+name "pushover"
+description "A minimal D application."
+copyright "Copyright © 2016, laeeth"
+authors "laeeth"
