@@ -305,7 +305,7 @@ JSONValue request(PushoverAPI api, string url, HTTP.Method method=HTTP.Method.ge
         paramsData.put(params[param].toString.stripQuotes.encodeComponent);
     }
 
-    version(debug)
+    debug
     {
         writefln("%s",params.toString);
         writefln("%s",paramsData.data.to!string);
