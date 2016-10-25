@@ -1,4 +1,5 @@
 module kaleidic.api.pushover;
+import kaleidic.auth;
 import std.stdio;
 import std.json;
 import std.net.curl;
@@ -324,19 +325,20 @@ JSONValue request(PushoverAPI api, string url, HTTP.Method method=HTTP.Method.ge
     return parseJSON(cast(string)response.data);
 }
 
-/++
-void main(string[] args)
+version(StandAlone)
 {
-    auto api=PushoverAPI("application token,"user key");
-    PushoverMessage message;
-    message=message.setMessage("message text")
-        .setTitle("message title")
-        .setUrl("google.com")
-        .setUrlTitle("google")
-        .setPriority(PushoverMessagePriority.high)
-        .setTimeStamp(DateTime(2013,1,1));
-    auto ret=api.sendMessage(message);
-    writefln("%s",ret["status"]);
-    writefln("%s",ret["request"]);
+	void main(string[] args)
+	{
+	    auto api=PushoverAPI(pushoverToken(),pushoverKey());
+	    PushoverMessage message;
+	    message=message.setMessage("message text")
+		.setTitle("message title")
+		.setUrl("google.com")
+		.setUrlTitle("google")
+		.setPriority(PushoverMessagePriority.high)
+		.setTimeStamp(DateTime(2013,1,1));
+	    auto ret=api.sendMessage(message);
+	    writefln("%s",ret["status"]);
+	    writefln("%s",ret["request"]);
+	}
 }
-+/
