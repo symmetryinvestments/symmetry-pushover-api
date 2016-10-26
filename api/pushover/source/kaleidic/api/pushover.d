@@ -329,6 +329,9 @@ version(StandAlone)
 {
 	void main(string[] args)
 	{
+		writefln("%s", pushoverToken());
+		writefln("%s", pushoverKey());
+
 	    auto api=PushoverAPI(pushoverToken(),pushoverKey());
 	    PushoverMessage message;
 	    message=message.setMessage("message text")
