@@ -3,7 +3,6 @@ description "Pushover API D port"
 copyright "Copyright © 2016, Laeeth Isharc and Kaleidic Associates"
 authors "Laeeth Isharc"
 dependency "kaleidic-auth" version ="*"
-importPaths "../../auth/source"
 
 configuration "library" {
 	targetType "library"
