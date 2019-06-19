@@ -3,7 +3,7 @@ import kaleidic.auth;
 import std.stdio;
 import std.json;
 import std.net.curl;
-import std.exception:Exception,enforce,assumeUnique;
+import std.exception:enforce,assumeUnique;
 import std.conv:to;
 import std.algorithm:countUntil,map,each;
 import std.traits:EnumMembers;
@@ -86,7 +86,7 @@ enum PushoverMessagePriority
     low=-1,
     normal=0,
     high=1,
-    emergency=2, 
+    emergency=2,
 }
 
 string[] PushoverMessageSounds;
