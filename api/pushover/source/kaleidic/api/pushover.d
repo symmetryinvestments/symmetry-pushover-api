@@ -1,4 +1,13 @@
+/**
+    Implemented in the D Programming Language 2016 by Laeeth Isharc and Kaleidic Associates Advisory UK Limited
+    Boost Licensed
+    Use at your own risk - this is not tested at all.
+
+    API for pushover notification API
+    https://pushover.net/
+*/
 module kaleidic.api.pushover;
+
 import kaleidic.auth;
 import std.stdio;
 import std.json;
@@ -12,14 +21,6 @@ import std.format:format;
 import std.variant:Algebraic;
 import std.typecons:Nullable;
 import std.datetime:SysTime,DateTime;
-/**
-    Implemented in the D Programming Language 2016 by Laeeth Isharc and Kaleidic Associates Advisory UK Limited
-    Boost Licensed
-    Use at your own risk - this is not tested at all.
-
-    API for pushover notification API
-    https://pushover.net/
-*/
 
 static this()
 {
