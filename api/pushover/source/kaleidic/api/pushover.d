@@ -55,13 +55,7 @@ string joinUrl(string url, string endpoint)
         url=url[0..$-1];
     return url~"/"~endpoint;
 }
-/**
-    auto __str__(self):
-        return b"<{:s} at {:#x}>".format(type(self).__name__, id(self))
 
-    auto __unicode__(self):
-        return "<{:s} at {:#x}>".format(type(self).__name__, id(self))
-*/
 
 struct PushoverAPI
 {
