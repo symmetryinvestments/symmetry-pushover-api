@@ -8,19 +8,11 @@
 */
 module kaleidic.api.pushover;
 
-import kaleidic.auth;
-import std.stdio;
-import std.json;
-import std.net.curl;
-import std.exception:enforce, assumeUnique;
-import std.conv:to;
-import std.algorithm:countUntil, map, each;
-import std.traits:EnumMembers;
-import std.array:array, appender;
-import std.format:format;
-import std.variant:Algebraic;
-import std.typecons:Nullable;
-import std.datetime:SysTime, DateTime;
+
+import std.datetime: SysTime, DateTime;
+import std.json: JSONValue;
+import std.net.curl: HTTP;
+
 
 immutable PushoverMessageSounds = [
     "pushover",
@@ -50,6 +42,7 @@ immutable PushoverMessageSounds = [
 
 string joinUrl(string url, string endpoint)
 {
+    import std.exception: enforce;
     enforce(url.length > 0, "broken url");
     if (url[$-1] == '/')
         url = url[0..$-1];
@@ -86,6 +79,9 @@ enum PushoverMessagePriority
 
 struct PushoverMessage
 {
+    import std.typecons: Nullable;
+    import std.datetime: SysTime;
+
     string messageText = null;
     string device = null;
     string title = null;
@@ -138,6 +134,7 @@ auto ref setPriority(ref PushoverMessage message, PushoverMessagePriority priori
 
 auto ref setPriority(ref PushoverMessage message, int priority)
 {
+    import std.conv: to;
     message.priority = priority.to!PushoverMessagePriority;
     return message;
 }
@@ -278,10 +275,13 @@ JSONValue request(PushoverAPI api,
                   HTTP.Method method = HTTP.Method.get,
                   JSONValue params = JSONValue(null))
 {
-    import std.array:appender;
-    import std.uri:encodeComponent;
-    import std.conv:to;
-    import std.algorithm:canFind;
+    import std.array: appender;
+    import std.uri: encodeComponent;
+    import std.conv: to;
+    import std.algorithm: canFind;
+    import std.exception: enforce;
+    import std.stdio: writefln;
+    import std.json: parseJSON;
 
     enforce(api.token.length > 0, "no token provided");
     auto paramsData = appender!string;
@@ -326,6 +326,9 @@ version(StandAlone)
 {
     void main(string[] args)
     {
+        import kaleidic.auth: pushoverToken, pushoverKey;
+        import std.stdio: writefln;
+
         writefln("%s", pushoverToken());
         writefln("%s", pushoverKey());
 
