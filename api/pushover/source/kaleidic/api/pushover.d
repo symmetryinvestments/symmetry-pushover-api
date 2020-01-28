@@ -22,32 +22,31 @@ import std.variant:Algebraic;
 import std.typecons:Nullable;
 import std.datetime:SysTime,DateTime;
 
-static this()
-{
-    PushoverMessageSounds=[ "pushover",
-                            "bike",
-                            "bugle",
-                            "cashregister",
-                            "classical",
-                            "cosmic",
-                            "falling",
-                            "gamelan",
-                            "incoming",
-                            "intermission",
-                            "magic",
-                            "mechanical",
-                            "pianobar",
-                            "siren",
-                            "spacealarm",
-                            "tugboat",
-                            "alien",
-                            "climb",
-                            "persistent",
-                            "echo",
-                            "updown",
-                            "none"  ];
+immutable PushoverMessageSounds = [
+    "pushover",
+    "bike",
+    "bugle",
+    "cashregister",
+    "classical",
+    "cosmic",
+    "falling",
+    "gamelan",
+    "incoming",
+    "intermission",
+    "magic",
+    "mechanical",
+    "pianobar",
+    "siren",
+    "spacealarm",
+    "tugboat",
+    "alien",
+    "climb",
+    "persistent",
+    "echo",
+    "updown",
+    "none"
+];
 
-}
 
 string joinUrl(string url, string endpoint)
 {
@@ -90,7 +89,6 @@ enum PushoverMessagePriority
     emergency=2,
 }
 
-string[] PushoverMessageSounds;
 
 struct PushoverMessage
 {
