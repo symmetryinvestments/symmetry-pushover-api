@@ -174,7 +174,7 @@ auto sendMessage(PushoverAPI api, PushoverMessage message, string user = null)
     if (!message.priority.isNull)
         params["priority"] = message.priority;
     if (!message.timeStamp.isNull)
-        params["time_stamp"] = message.timeStamp.toUnixTime;
+        params["time_stamp"] = message.timeStamp.get.toUnixTime;
     if (message.sound !is null)
         params["sound"] = message.sound;
     return api.request("messages.json", HTTP.Method.post, params);
