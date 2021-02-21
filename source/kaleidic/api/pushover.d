@@ -326,13 +326,10 @@ version(StandAlone)
 {
     void main(string[] args)
     {
-        import kaleidic.auth: pushoverToken, pushoverKey;
+        import std.process : environment;
         import std.stdio: writefln;
 
-        writefln("%s", pushoverToken());
-        writefln("%s", pushoverKey());
-
-        auto api = PushoverAPI(pushoverToken(), pushoverKey());
+        auto api = PushoverAPI(environment.get("PUSHOVER_API_TOKEN",""),environment.get("PUSHOVER_API_KEY",""));
         PushoverMessage message;
         message = message.setMessage("message text")
         .setTitle("message title")
