@@ -2,6 +2,7 @@ name "symmetry-pushover-api"
 description "Pushover API D port"
 copyright "Copyright © 2016-2020, Laeeth Isharc,Kaleidic Associates, and Symmetry Investments"
 authors "Laeeth Isharc"
+license "MIT"
 
 configuration "library" {
 	targetType "library"

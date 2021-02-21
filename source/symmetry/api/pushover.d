@@ -1,6 +1,6 @@
 /**
     Implemented in the D Programming Language 2016 by Laeeth Isharc and Kaleidic Associates Advisory UK Limited
-    Boost Licensed
+    MIT Licensed
     Use at your own risk - this is not tested at all.
 
     API for pushover notification API
