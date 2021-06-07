@@ -172,7 +172,7 @@ auto sendMessage(PushoverAPI api, PushoverMessage message, string user = null)
     if (message.urlTitle !is null)
         params["url_title"] = message.urlTitle;
     if (!message.priority.isNull)
-        params["priority"] = message.priority;
+        params["priority"] = message.priority.get;
     if (!message.timeStamp.isNull)
         params["time_stamp"] = message.timeStamp.get.toUnixTime;
     if (message.sound !is null)
